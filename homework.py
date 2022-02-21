@@ -16,13 +16,13 @@ class InfoMessage:
     def get_message(self) -> None:
         """Возвращает строку сообщения"""
 
-        print(f'Тип тренировки: {self.training_type}; Длительность: {self.duration} ч.; Дистанция: {self.distance} км; '
-              f'Ср. скорость: {self.speed} км/ч; Потрачено ккал: {self.calories}.')
+        print(f'Тип тренировки: {self.training_type}; Длительность: {self.duration:.3f} ч.; Дистанция: {self.distance:.3f} км; '
+              f'Ср. скорость: {self.speed:.3f} км/ч; Потрачено ккал: {self.calories:.3f}.')
 
 
 class Training:
     """Базовый класс тренировки."""
-    LEN_STEP: float
+    LEN_STEP: float = 0.65
     M_IN_KM: int = 1000
 
     def __init__(self,
@@ -52,7 +52,8 @@ class Training:
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
-        pass
+
+        return InfoMessage.get_message(self)
 
 
 class Running(Training):
